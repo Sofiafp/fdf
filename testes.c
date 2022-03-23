@@ -6,11 +6,11 @@
 /*   By: salegre- <salegre-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:17:36 by salegre-          #+#    #+#             */
-/*   Updated: 2022/03/23 14:28:38 by salegre-         ###   ########.fr       */
+/*   Updated: 2022/03/23 14:40:47 by salegre-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
+#include "libfdf.h"
 
 int	main(void)
 {
