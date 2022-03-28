@@ -6,35 +6,12 @@
 /*   By: salegre- <salegre-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:17:36 by salegre-          #+#    #+#             */
-/*   Updated: 2022/03/28 10:37:14 by salegre-         ###   ########.fr       */
+/*   Updated: 2022/03/28 12:11:04 by salegre-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfdf.h"
 
-/*
-int		main(void)
-{
-	void *mlx;
-	void *win;
-	int x;
-	int y;
-
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 400, 400, "mlx 42");
-	y = 50;
-	while (y < 150)
-	{
-		x = 50;
-		while (x < 150)
-		{
-			mlx_pixel_put(mlx, win, x, y, 0x11FFFFFF); // color: 0x(Alpha)(Red)(Green)(Blue)
-			x++;
-		}
-		y++;
-	}
-	mlx_loop(mlx);
-}*/
 
 int	main(void)
 {
