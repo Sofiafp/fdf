@@ -6,7 +6,7 @@
 #    By: salegre- <salegre-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/06 20:00:00 by salegre-          #+#    #+#              #
-#    Updated: 2022/03/23 14:32:53 by salegre-         ###   ########.fr        #
+#    Updated: 2022/03/28 10:38:32 by salegre-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ all:		$(NAME)
 
 $(NAME):	$(OBJS) $(INCLUDE)
 			$(LIB1) $(NAME) $(OBJS)
-			$(CC) testes.c  -L. -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+			$(CC) testes.c  -L. -lmlx -framework OpenGL -framework AppKit -o fdf
 
 .c.o:
 			$(CC) $(CFLAGS) -I$(INCLUDE) -c $< -o $(<:.c=.o)

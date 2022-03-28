@@ -6,14 +6,14 @@
 /*   By: salegre- <salegre-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:38:43 by salegre-          #+#    #+#             */
-/*   Updated: 2022/03/23 14:40:40 by salegre-         ###   ########.fr       */
+/*   Updated: 2022/03/25 13:47:51 by salegre-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFDF_H
 # define LIBFDF_H
 
-#include "minilibx_macos/mlx.h"
+# include "minilibx_macos/mlx.h"
 
 #endif
 
