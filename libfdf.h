@@ -6,7 +6,7 @@
 /*   By: salegre- <salegre-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:38:43 by salegre-          #+#    #+#             */
-/*   Updated: 2022/03/28 12:18:03 by salegre-         ###   ########.fr       */
+/*   Updated: 2022/03/29 22:26:49 by salegre-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,20 @@
 # include "get_next_line/libgnl.h"
 # include "libft/libft.h"
 # include <fcntl.h>
+///APAGAR DEPOIS
+#include <stdio.h>
+////
+typedef struct s_win
+{
+	void	*ptr;
+	void	*win;
+	int		weight;
+	int		height;
+}	t_win;
 
+void	create_window(t_win **base, int weight, int height);
+void	draw(t_win *ptr, int **matrix);
+int		key_pressed(int keycode, void *param);
 
 #endif
 

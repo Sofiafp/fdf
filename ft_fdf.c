@@ -6,12 +6,11 @@
 /*   By: salegre- <salegre-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 11:20:44 by salegre-          #+#    #+#             */
-/*   Updated: 2022/03/28 23:08:13 by salegre-         ###   ########.fr       */
+/*   Updated: 2022/03/29 22:28:14 by salegre-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfdf.h"
-#include <stdio.h>
 
 int	get_height(char *file)
 {
@@ -44,6 +43,7 @@ int	get_weight(char *file)
 	{
 		weight++;
 	}
+	free(line);
 	close(fd);
 	return (weight);
 }
@@ -69,8 +69,6 @@ int	**create_matrix(char *file, int height, int weight)
 		while (j != weight)
 		{
 			matrix[i][j] = ft_atoi(line[j]);
-			//printf("%s ", line[j]);
-			//printf("%d ", matrix[i][j]);
 			j++;
 		}
 		i++;
@@ -79,32 +77,21 @@ int	**create_matrix(char *file, int height, int weight)
 }
 
 int main(int argc , char **file)
-{	
-	//int		fd;
-	//char	*line;
+{
+	t_win	*base;
+	int		**mtx;
 	int		height;
 	int		weight;
-	int		**line_matrix;
 	
-	if (argc < 2 || argc > 3)
+	if (argc < 2 || argc > 2)
 		return (0);
-	weight = get_weight(file[1]);
 	height = get_height(file[1]);
-	int i = 0;
-	int j;
-	line_matrix = create_matrix(file[1], height, weight);
-	while (i < height)
-	{
-		j = 0;
-		while (j < weight)
-		{
-			printf("%s%d%s ",red, line_matrix[i][j], normal);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
-	printf("height: %d\n", height);
-	printf("weight: %d\n", weight);
+	weight = get_weight(file[1]);
+	mtx = create_matrix(file[1], height, weight);
+	base = malloc(sizeof(t_win));
+	create_window(&base, weight, height);
+	draw(base, mtx);
+	mlx_key_hook(base->win, key_pressed, (void *)13);
+	mlx_loop(base->ptr);
 	return(0);
 }

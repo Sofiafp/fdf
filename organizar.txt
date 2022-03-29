@@ -1,0 +1,31 @@
+LIBPSP.H
+t_win [structure]
+	- 'ptr' referes to the initialization 
+	- 'win' refers to the window;
+	- 'weight' refers to the number of collumns
+	- 'height' refers to the num ber of rows
+
+FT_FDF.C
+		[Very likely to change]
+
+get_height()
+	- reads the whole file and counts the number on lines
+
+get_weight()
+	- reads the first line, splits it, and counts the elements
+
+create_matrix()
+	[FULL OF LEAKS!! CHECK IT OUT]
+	- creates the matrix representinf the map
+
+main()
+	- Only works if the number of arguments is 2
+	- Get the weight (no collumns) and height (no rows) of the matrix
+	- Put all the information of the map into an int line_matrix
+	- Create the window and loop it
+
+CREATE_WINDOW.C
+
+create_window()
+	- initializes the window
+	- defines the weight and height of the map
