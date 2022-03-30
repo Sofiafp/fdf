@@ -29,3 +29,7 @@ CREATE_WINDOW.C
 create_window()
 	- initializes the window
 	- defines the weight and height of the map
+
+THE MATH
+x'=(x-z)/sqrt(2)
+y'=(x+2y+z)/sqrt(6)

@@ -6,7 +6,7 @@
 /*   By: salegre- <salegre-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 11:20:44 by salegre-          #+#    #+#             */
-/*   Updated: 2022/03/29 22:28:14 by salegre-         ###   ########.fr       */
+/*   Updated: 2022/03/30 21:53:18 by salegre-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,8 @@ int main(int argc , char **file)
 	base = malloc(sizeof(t_win));
 	create_window(&base, weight, height);
 	draw(base, mtx);
-	mlx_key_hook(base->win, key_pressed, (void *)13);
+	// int i = 0;
+//	mlx_key_hook(base->win, key_hook, &i);
 	mlx_loop(base->ptr);
 	return(0);
 }

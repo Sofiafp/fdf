@@ -6,7 +6,7 @@
 /*   By: salegre- <salegre-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:38:43 by salegre-          #+#    #+#             */
-/*   Updated: 2022/03/29 22:26:49 by salegre-         ###   ########.fr       */
+/*   Updated: 2022/03/30 19:15:48 by salegre-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_win
 
 void	create_window(t_win **base, int weight, int height);
 void	draw(t_win *ptr, int **matrix);
-int		key_pressed(int keycode, void *param);
+int		key_hook(int keycode, int *i);
 
 #endif
 
