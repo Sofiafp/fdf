@@ -6,7 +6,7 @@
 #    By: salegre- <salegre-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/06 20:00:00 by salegre-          #+#    #+#              #
-#    Updated: 2022/03/29 13:21:26 by salegre-         ###   ########.fr        #
+#    Updated: 2022/04/03 17:37:25 by salegre-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRCS	=  libft/ft_isascii.c libft/ft_isprint.c libft/ft_isalpha.c libft/ft_isdigi
 			libft/ft_putchar_fd.c libft/ft_putstr_fd.c libft/ft_putendl_fd.c libft/ft_putnbr_fd.c \
 			libft/ft_substr.c libft/ft_strjoin.c libft/ft_strtrim.c libft/ft_split.c libft/ft_strmapi.c \
 			ft_fdf.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
-			create_window.c draw.c
+			create_window.c draw2.c
 			
 OBJS	= $(SRCS:.c=.o)
 
