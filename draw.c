@@ -6,7 +6,7 @@
 /*   By: salegre- <salegre-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 13:21:32 by salegre-          #+#    #+#             */
-/*   Updated: 2022/04/03 17:32:08 by salegre-         ###   ########.fr       */
+/*   Updated: 2022/04/11 15:10:39 by salegre-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,3 +76,30 @@ void	draw(t_win *base, int **matrix)
 		r += 20;
 	}	
 }
+
+
+	// {
+	// 	int x_b =  
+	// 	int y_b = (x +25 + 2*y + matrix[i][j + 1]) / sqrt(6);
+
+	// 	//float add = (y_b - y_a)/(x_b - x_a);
+	// 	//float res = 0;
+	// 	while (x_a != x_b)
+	// 	{
+	// 		// ft_putstr_fd("OIOI", 1);
+	// 		mlx_pixel_put(ptr, ptr->win, y_a, x_a, 0x11FFFFFF);
+	// 		y_a++;
+	// 	}
+	// }
+	
+	// if (i + j != ptr->height)
+	// {
+	// 	int x_c = (x - matrix[i][j + 1]) / sqrt(2);
+	// 	while (x_a_ != x_c)
+	// 	{
+	// 		// ft_putstr_fd("OIOI", 1);
+	// 		mlx_pixel_put(ptr, ptr->win, y_a_, x_a_, 0x11FFFFFF);
+	// 		x_a_++;
+	// 	}				
+	// } 
+	//mlx_pixel_put(ptr, ptr->win, y_a, x_a, 0x11FFFFFF);

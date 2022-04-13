@@ -6,7 +6,7 @@
 /*   By: salegre- <salegre-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 11:20:44 by salegre-          #+#    #+#             */
-/*   Updated: 2022/04/05 11:24:30 by salegre-         ###   ########.fr       */
+/*   Updated: 2022/04/11 15:51:28 by salegre-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	get_height(char *file)
 	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
 	height = 0;
-	while (line != NULL)
+	while (line != NULL && line[0] != '\n')
 	{
 		line = get_next_line(fd);
 		height++;		
@@ -39,10 +39,8 @@ int	get_weight(char *file)
 	fd = open(file, O_RDONLY);
 	line = ft_split(get_next_line(fd), ' ');
 	weight = 0;
-	while (line[weight] != NULL)
-	{
+	while (line[weight] != NULL && line[weight][0] != '\n')
 		weight++;
-	}
 	free(line);
 	close(fd);
 	return (weight);
@@ -59,12 +57,14 @@ int	**create_matrix(char *file, int height, int weight)
 	fd = open(file, O_RDONLY);
 	matrix = malloc((height + 1) * sizeof(int *));
 	if (!matrix)
-		return (0);
+		return (NULL);
 	i = 0;
 	while (i != height)
 	{
 		line = ft_split(get_next_line(fd), ' ');
 		matrix[i] = malloc((weight + 1) * sizeof(int));
+		if (!matrix)
+			return (NULL);
 		j = 0;
 		while (j != weight)
 		{
@@ -82,17 +82,22 @@ int main(int argc , char **file)
 	int		**mtx;
 	int		height;
 	int		weight;
+	(void)file;
 	
-	if (argc < 2 || argc > 2)
+	if (argc != 2)
 		return (0);
 	height = get_height(file[1]);
 	weight = get_weight(file[1]);
-	mtx = create_matrix(file[1], height, weight);
 	base = malloc(sizeof(t_win));
+	if (!base)
+		return (0);
 	create_window(&base, weight, height);
+	mtx = create_matrix(file[1], height, weight);
+	if (!mtx)
+		return (0);
 	draw(base, mtx);
-	// int i = 0;
-//	mlx_key_hook(base->win, key_hook, &i);
+	free(mtx);
 	mlx_loop(base->ptr);
+	free(base);
 	return(0);
 }

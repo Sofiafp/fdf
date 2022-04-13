@@ -6,72 +6,99 @@
 /*   By: salegre- <salegre-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 17:02:35 by salegre-          #+#    #+#             */
-/*   Updated: 2022/04/05 22:15:32 by salegre-         ###   ########.fr       */
+/*   Updated: 2022/04/11 16:24:33 by salegre-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfdf.h"
 #include <math.h>
 
+// void	go_up(t_win )
+// {
+	
+// }
+
+void	draw_horizontals(t_win *ptr, t_points *pt, int **matrix)
+{
+	pt->x_b = (pt->x + 25 - matrix[pt->i][pt->j + 1])/sqrt(2);
+	pt->y_b = (pt->x + 25 - 2*(pt->y) + matrix[pt->i][pt->j + 1])/sqrt(6);
+
+	pt->x_steps = pt->x_b - pt->x_a;
+	pt->y_steps = pt->y_b - pt->y_a;
+	(void)ptr;
+	// if (pt->y_steps > 0)
+	// 	go_up(ptr, pt);
+	// else if (pt->y_steps < 0)
+	// 	go_down(ptr, pt);
+	// else
+	// 	go_straight(ptr, pt);
+}
+
 void	find_points(t_win *ptr, int **matrix, int x, int y)
 {
-	(void)matrix;
-	static int	i;
-	static int	j;
-	//ft_putnbr_fd(matrix[i][j], 1);
-	int x_a = (x - matrix[i][j]) / sqrt(2);
-	int y_a = (x + 2*y + matrix[i][j]) / sqrt(6);
+	(void)x;
+	(void)y;
+	t_points	*pt;
+	static int s_i;
+	static int s_j;
+	
+	pt = malloc(sizeof(t_points));
+
+	pt->x_a = (x - matrix[s_i][s_j]) / sqrt(2);
+	pt->y_a = (x + 2*y + matrix[s_i][s_j]) / sqrt(6); 
+	pt->i = s_i;
+	pt->j = s_j;
+	pt->x = x;
+	pt->y = y;
 	// int x_a_ = x_a;
 	// int y_a_ = y_a;
 
-	if (j + 1 != ptr->weight)
+//	if (s_j + 1 != ptr->weight)
+//	{
+		//draw_horizontals(ptr, pt, matrix);
+	mlx_pixel_put(ptr, ptr->win, pt->x_a, pt->y_a, 0x11FFFFFF);
+//	}
+	
+	free(pt);
+	if (s_j == ptr->weight - 1)
 	{
-		int x_b = (x + 25 - matrix[i][j + 1]) / sqrt(2);
-		int y_b = (x +25 + 2*y + matrix[i][j + 1]) / sqrt(6);
-
-		//float add = (y_b - y_a)/(x_b - x_a);
-		//float res = 0;
-		while (x_a != x_b)
-		{
-			// ft_putstr_fd("OIOI", 1);
-			mlx_pixel_put(ptr, ptr->win, y_a, x_a, 0x11FFFFFF);
-			y_a++;
-		}
-	}
-	// if (i + j != ptr->height)
-	// {
-	// 	int x_c = (x - matrix[i][j + 1]) / sqrt(2);
-	// 	while (x_a_ != x_c)
-	// 	{
-	// 		// ft_putstr_fd("OIOI", 1);
-	// 		mlx_pixel_put(ptr, ptr->win, y_a_, x_a_, 0x11FFFFFF);
-	// 		x_a_++;
-	// 	}				
-	// } 
-	//mlx_pixel_put(ptr, ptr->win, y_a, x_a, 0x11FFFFFF);
-	if (j == ptr->weight - 1)
-	{
-		j = 0;
-		i++;
+		s_j = 0;
+		s_i++;
 	}
 	else
-		j++;
+		s_j++;
 }
 
 void	draw(t_win *ptr, int **matrix)
 {
 	int	x;
 	int	y;
+	int	steps;
+	int x_barrier;
+	int y_barrier;	
+	(void)matrix;
 	
+	if (ptr->height > (3*ptr->weight)/4)
+	{
+		steps = ((ptr->win_height * 4)/6)/ptr->height;
+		y_barrier = ptr->win_height/6;
+		x_barrier = (ptr->win_weight - steps*ptr->weight)/2;
+	}
+	else
+	{
+		steps = ((ptr->win_weight * 4)/6)/ptr->weight;
+		y_barrier = (ptr->win_height - steps*ptr->height)/2;
+		x_barrier = ptr->win_weight/6;
+	}
 	y = 0;
-	while (y != ptr->height*25)
+	while (y != (ptr->height)*steps)
 	{
 		x = 0;
-		while (x != ptr->weight*25)
+		while (x != (ptr->weight)*steps)
 		{
-			find_points(ptr, matrix, y + 150, x + 100);
-			x += 25;
+			find_points(ptr, matrix, x + x_barrier, y + y_barrier);
+			x += steps;
 		}
-		y += 25;
+		y += steps;
 	}
 }

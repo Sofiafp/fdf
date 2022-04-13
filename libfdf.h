@@ -6,7 +6,7 @@
 /*   By: salegre- <salegre-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:38:43 by salegre-          #+#    #+#             */
-/*   Updated: 2022/03/30 19:15:48 by salegre-         ###   ########.fr       */
+/*   Updated: 2022/04/11 15:45:01 by salegre-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,27 @@ typedef struct s_win
 	void	*win;
 	int		weight;
 	int		height;
+	int		win_height;
+	int		win_weight;
 }	t_win;
+
+typedef struct s_points
+{
+	int i;
+	int j;
+	int x;
+	int y;
+	int	x_a;
+	int	y_a;
+	int	x_b;
+	int	y_b;
+	int	x_c;
+	int	y_c;
+	int	x_steps;
+	int	y_steps;
+	float	add;
+	float	res;
+}	t_points;
 
 void	create_window(t_win **base, int weight, int height);
 void	draw(t_win *ptr, int **matrix);
