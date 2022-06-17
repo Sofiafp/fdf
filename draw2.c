@@ -6,7 +6,7 @@
 /*   By: salegre- <salegre-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 17:02:35 by salegre-          #+#    #+#             */
-/*   Updated: 2022/04/11 16:24:33 by salegre-         ###   ########.fr       */
+/*   Updated: 2022/06/17 17:33:58 by salegre-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,18 @@ void	find_points(t_win *ptr, int **matrix, int x, int y)
 	// int x_a_ = x_a;
 	// int y_a_ = y_a;
 
-//	if (s_j + 1 != ptr->weight)
+//	if (s_j + 1 != ptr->width)
 //	{
 		//draw_horizontals(ptr, pt, matrix);
-	mlx_pixel_put(ptr, ptr->win, pt->x_a, pt->y_a, 0x11FFFFFF);
+		// int n = 30;
+	// while (n--)
+	// {
+		mlx_pixel_put(ptr, ptr->win, pt->x_a + ptr->x_barrier , pt->y_a + ptr->y_barrier, 0x11FFFFFF);
+	// 	pt->x_a++;
+	// }
 //	}
-	
 	free(pt);
-	if (s_j == ptr->weight - 1)
+	if (s_j == ptr->width - 1)
 	{
 		s_j = 0;
 		s_i++;
@@ -74,29 +78,29 @@ void	draw(t_win *ptr, int **matrix)
 	int	x;
 	int	y;
 	int	steps;
-	int x_barrier;
-	int y_barrier;	
-	(void)matrix;
 	
-	if (ptr->height > (3*ptr->weight)/4)
+	if (ptr->height > (3*ptr->width)/4)
 	{
+		
 		steps = ((ptr->win_height * 4)/6)/ptr->height;
-		y_barrier = ptr->win_height/6;
-		x_barrier = (ptr->win_weight - steps*ptr->weight)/2;
+		ptr->y_barrier = ptr->win_height/6;
+		ptr->x_barrier = (ptr->win_width - steps*ptr->width)/2;
 	}
 	else
 	{
-		steps = ((ptr->win_weight * 4)/6)/ptr->weight;
-		y_barrier = (ptr->win_height - steps*ptr->height)/2;
-		x_barrier = ptr->win_weight/6;
+		steps = ((ptr->win_width * 6)/8)/ptr->width;
+		ptr->y_barrier = (ptr->win_height - steps*ptr->height)/2;
+		ptr->x_barrier = ptr->win_width/8;
 	}
 	y = 0;
 	while (y != (ptr->height)*steps)
 	{
 		x = 0;
-		while (x != (ptr->weight)*steps)
+		while (x != (ptr->width)*steps)
 		{
-			find_points(ptr, matrix, x + x_barrier, y + y_barrier);
+		//	mlx_pixel_put(ptr, ptr->win, x + ptr->x_barrier , y + ptr->y_barrier, 0x11FFFFFF);
+
+			find_points(ptr, matrix, x, y);
 			x += steps;
 		}
 		y += steps;

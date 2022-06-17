@@ -6,7 +6,7 @@
 /*   By: salegre- <salegre-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 13:21:32 by salegre-          #+#    #+#             */
-/*   Updated: 2022/04/11 15:10:39 by salegre-         ###   ########.fr       */
+/*   Updated: 2022/04/21 10:10:03 by salegre-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	draw(t_win *base, int **matrix)
 	{
 		c = 0;
 		j = 0;
-		while (j < base->weight)
+		while (j < base->width)
 		{
 			find_points(base, r, c, matrix[i][j]);
 			//printf("%i ", matrix[i][j]);

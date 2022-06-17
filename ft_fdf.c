@@ -6,7 +6,7 @@
 /*   By: salegre- <salegre-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 11:20:44 by salegre-          #+#    #+#             */
-/*   Updated: 2022/04/11 15:51:28 by salegre-         ###   ########.fr       */
+/*   Updated: 2022/06/17 16:52:55 by salegre-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,23 @@ int	get_height(char *file)
 	return (height);
 }
 
-int	get_weight(char *file)
+int	get_width(char *file)
 {
 	char 	**line;
 	int 	fd;
-	int 	weight;
+	int 	width;
 	
 	fd = open(file, O_RDONLY);
 	line = ft_split(get_next_line(fd), ' ');
-	weight = 0;
-	while (line[weight] != NULL && line[weight][0] != '\n')
-		weight++;
+	width = 0;
+	while (line[width] != NULL && line[width][0] != '\n')
+		width++;
 	free(line);
 	close(fd);
-	return (weight);
+	return (width);
 }
 
-int	**create_matrix(char *file, int height, int weight)
+int	**create_matrix(char *file, int height, int width)
 {
 	int	**matrix;
 	int i;
@@ -62,11 +62,11 @@ int	**create_matrix(char *file, int height, int weight)
 	while (i != height)
 	{
 		line = ft_split(get_next_line(fd), ' ');
-		matrix[i] = malloc((weight + 1) * sizeof(int));
+		matrix[i] = malloc((width + 1) * sizeof(int));
 		if (!matrix)
 			return (NULL);
 		j = 0;
-		while (j != weight)
+		while (j != width)
 		{
 			matrix[i][j] = ft_atoi(line[j]);
 			j++;
@@ -81,21 +81,28 @@ int main(int argc , char **file)
 	t_win	*base;
 	int		**mtx;
 	int		height;
-	int		weight;
+	int		width;
 	(void)file;
 	
 	if (argc != 2)
 		return (0);
 	height = get_height(file[1]);
-	weight = get_weight(file[1]);
+	width = get_width(file[1]);
 	base = malloc(sizeof(t_win));
 	if (!base)
 		return (0);
-	create_window(&base, weight, height);
-	mtx = create_matrix(file[1], height, weight);
+	create_window(&base, width, height);
+	mtx = create_matrix(file[1], height, width);
 	if (!mtx)
 		return (0);
 	draw(base, mtx);
+	int i;
+	i = 0;
+	while(i != height)
+	{
+		free(mtx[i]);
+		i++;
+	}
 	free(mtx);
 	mlx_loop(base->ptr);
 	free(base);

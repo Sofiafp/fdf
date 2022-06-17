@@ -6,7 +6,7 @@
 /*   By: salegre- <salegre-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:38:43 by salegre-          #+#    #+#             */
-/*   Updated: 2022/04/11 15:45:01 by salegre-         ###   ########.fr       */
+/*   Updated: 2022/04/21 10:10:03 by salegre-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,12 @@ typedef struct s_win
 {
 	void	*ptr;
 	void	*win;
-	int		weight;
+	int		width;
 	int		height;
 	int		win_height;
-	int		win_weight;
+	int		win_width;
+	int		x_barrier;
+	int		y_barrier;
 }	t_win;
 
 typedef struct s_points
@@ -59,7 +61,7 @@ typedef struct s_points
 	float	res;
 }	t_points;
 
-void	create_window(t_win **base, int weight, int height);
+void	create_window(t_win **base, int width, int height);
 void	draw(t_win *ptr, int **matrix);
 int		key_hook(int keycode, int *i);
 
